@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0-alpha</Version>
+    <Title>WSY.CertHub.Core</Title>
+    <Authors>WSY</Authors>
+    <Copyright>$(Authors)</Copyright>
+    <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SnkFile)</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+</Project>
