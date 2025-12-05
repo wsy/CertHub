@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0-alpha</Version> 
+    <Title>WSY.CertHub.CmdSample</Title> 
+    <Authors>WSY</Authors> 
+    <Copyright>$(Authors)</Copyright> 
+    <Platforms>AnyCPU;x64;x86;ARM64</Platforms> 
+  </PropertyGroup> 
+ 
+  <PropertyGroup> 
+    <SignAssembly>True</SignAssembly> 
+    <AssemblyOriginatorKeyFile>$(SnkFile)</AssemblyOriginatorKeyFile> 
+  </PropertyGroup> 
+ 
+  <PropertyGroup> 
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild> 
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow> 
+  </PropertyGroup> 
+
+  <ItemGroup>
+    <Content Include="appsettings.development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WSY.CertHub.Core\WSY.CertHub.Core.csproj" />
+    <ProjectReference Include="..\WSY.CertHub.Targets.SoftEther\WSY.CertHub.Targets.SoftEther.csproj" />
+    <ProjectReference Include="..\WSY.CertHub.Targets.SSH\WSY.CertHub.Targets.SSH.csproj" />
+    <ProjectReference Include="..\WSY.CertHub.TencentCloud\WSY.CertHub.TencentCloud.csproj" />
+  </ItemGroup>
+
+</Project>
