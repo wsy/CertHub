@@ -31,8 +31,15 @@ public class TencentCloudCertificateProvider : TencentCloudBaseProvider<SslClien
         var existingCertificate = await DescribeCertificateByStatusAsync(domainName, cancellationToken);
         if (existingCertificate != null)
         {
-            logger.LogInformation("Cert already exists with ID {Id} and ExpireDate {ExpireDate}. Returning existing cert.", existingCertificate.CertificateId, existingCertificate.CertEndTime);
-            return existingCertificate.CertificateId;
+            if (DateTime.TryParse(existingCertificate.CertEndTime, out var endTime) && endTime > DateTime.Now.AddDays(30))
+            {
+                logger.LogInformation("Cert already exists with ID {Id} and ExpireDate {ExpireDate}. Returning existing cert.", existingCertificate.CertificateId, existingCertificate.CertEndTime);
+                return existingCertificate.CertificateId;
+            }
+            else
+            {
+                logger.LogInformation("Cert already exists with ID {Id} and ExpireDate {ExpireDate}, but is expiring soon. Will request a new one.", existingCertificate.CertificateId, existingCertificate.CertEndTime);
+            }
         }
         logger.LogInformation("Applying new cert.");
         string dnsAuthMethod = "DNS_AUTO";
